@@ -67,7 +67,8 @@ namespace ApiWeb.Repository
             var filter = Builders<Usuario>.Filter.Eq(x => x.ID, usuario.ID);
             var update = Builders<Usuario>.Update.Set("Nome", usuario.Nome)
                 .Set("Senha", usuario.Senha)
-                .Set("Email", usuario.Email);
+                .Set("Email", usuario.Email)
+                .Set("Altura", usuario.Altura);
 
             collection.UpdateOne(filter, update);
         }

@@ -5,8 +5,9 @@ namespace ApiWeb.Models
     public class Evento
     {
         public int ID { get; set; }
-        public int UsuarioID { get; set; }
-        public DateTime Data { get; set; }
-        public string Titulo { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+        public string title { get; set; }
+        public bool allDay { get; set; }
     }
 }

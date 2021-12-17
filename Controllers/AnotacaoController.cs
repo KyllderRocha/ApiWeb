@@ -46,7 +46,7 @@ namespace ApiWeb.Controllers
             try
             {
                 UsuarioRepository usuarioRepository = new UsuarioRepository();
-                usuarioRepository.PutEventos(data);
+                usuarioRepository.PutAnotacao(data);
                 return Ok("Ok");
 
             }
