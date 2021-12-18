@@ -84,7 +84,7 @@ namespace ApiWeb.Controllers
             catch (Exception ex)
             {
                 return BadRequest("Erro");
-            }
+            } 
 
         }
     }
