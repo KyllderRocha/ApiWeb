@@ -6,7 +6,8 @@ namespace ApiWeb.Models
     {
         public string Texto { get; set; }
         public string Exercicio { get; set; }
-        public TimeSpan Tempo { get; set; }
+        public string Tempo { get; set; }
         public double Peso { get; set; }
+        public DateTime Data { get; set; }
     }
 }

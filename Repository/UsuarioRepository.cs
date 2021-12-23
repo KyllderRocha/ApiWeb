@@ -12,14 +12,6 @@ namespace ApiWeb.Repository
         MongoClient client;
         IMongoDatabase database;
         IMongoCollection<Usuario> collection;
-        //public UsuarioRepository(Configurations configurations)
-        //{
-        //    var settings = MongoClientSettings.FromConnectionString(configurations.Mongo);
-        //    client = new MongoClient(settings);
-        //    database = client.GetDatabase(configurations.Database);
-        //    collection = database.GetCollection<Usuario>("User");
-
-        //}
         public UsuarioRepository()
         {
             var settings = MongoClientSettings.FromConnectionString("mongodb+srv://PPOUser:EduardaFellipe@cluster0.byu72.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
@@ -43,11 +35,11 @@ namespace ApiWeb.Repository
             return collection.Find(filter).FirstOrDefault();
         }
 
-        public Anotacao GetAnotacao(string ID)
+        public List<Anotacao> GetAnotacao(string ID)
         {
             var filter = Builders<Usuario>.Filter.Eq(x => x.ID, ID);
 
-            return collection.Find(filter).FirstOrDefault().anotacao;
+            return collection.Find(filter).FirstOrDefault().anotacoes;
         }
 
         public List<Evento> GetEventos(string ID)
@@ -75,10 +67,11 @@ namespace ApiWeb.Repository
         public void PutAnotacao(Usuario usuario)
         {
             var filter = Builders<Usuario>.Filter.Eq(x => x.ID, usuario.ID);
-            var update = Builders<Usuario>.Update.Set("anotacao", usuario.anotacao);
+            var update = Builders<Usuario>.Update.Set("anotacoes", usuario.anotacoes);
 
             collection.UpdateOne(filter, update);
         }
+
         public void PutEventos(Usuario usuario)
         {
             var filter = Builders<Usuario>.Filter.Eq(x => x.ID, usuario.ID);

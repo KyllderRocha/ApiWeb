@@ -20,7 +20,7 @@ namespace ApiWeb.Models
         public string Senha { get; set; }
         public double Peso { get; set; }
         public double Altura { get; set; }
-        public Anotacao anotacao { get; set; }
+        public List<Anotacao> anotacoes { get; set; }
         public List<Evento> eventos { get; set; }
     }
 }

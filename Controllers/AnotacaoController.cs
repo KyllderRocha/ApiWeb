@@ -23,10 +23,13 @@ namespace ApiWeb.Controllers
         //}
 
         [HttpGet("{UsuarioID}")]
-        public ActionResult<Anotacao> Get(int UsuarioID)
+        public ActionResult<Anotacao> Get(string UsuarioID)
         {
-            string checklist = null;
-            return Ok(checklist);
+            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            var anotacoes = usuarioRepository.GetAnotacao(UsuarioID);
+            var Agrupar = from p in anotacoes group p by p.Data.ToShortDateString() into g select new { data = g.Key, peso = g.Average(x => x.Peso), tempoSegundos = g.Average( x => TimeSpan.Parse(x.Tempo).TotalSeconds) };
+
+            return Ok(Agrupar);
         }
 
         [HttpPost]
